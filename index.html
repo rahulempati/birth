@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Sharadh & Shanya! 🎉</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow: hidden; 
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center px-4 m-0">
+
+  <!-- Background Lofi Audio (Loops automatically) -->
+  <audio id="lofi-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Card Container -->
+  <div class="bg-white/90 backdrop-blur-sm shadow-2xl rounded-2xl p-6 sm:p-8 max-w-sm sm:max-w-md w-full text-center mx-auto transition-all duration-300 transform hover:scale-[1.02]">
+    
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-pink-500 mb-2 leading-tight">
+      🎂 Happy Birthday! 🎂
+    </h1>
+    
+    <h2 class="text-xl sm:text-2xl font-bold text-purple-600 mb-4">
+      Sharadh Reddy & Shanya Reddy
+    </h2>
+
+    <p class="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">
+      Wishing you both a day filled with love, laughter, and everything that makes you smile. 
+      May this year bring you endless happiness, success, and unforgettable memories!
+    </p>
+
+    <div class="text-5xl sm:text-6xl mb-6 select-none animate-bounce">🎉🎈🎁</div>
+
+    <p class="text-gray-600 italic text-xs sm:text-sm px-2">
+      "Count your life by smiles, not tears. Count your age by friends, not years."
+    </p>
+
+    <!-- Interactive Button -->
+    <button onclick="celebrate()" class="mt-6 px-6 py-3 bg-pink-500 text-white font-semibold rounded-xl shadow-lg hover:bg-pink-600 active:scale-95 transition-all w-full sm:w-auto">
+      Click for a Surprise 🎊
+    </button>
+
+    <!-- Hidden Reveal Message -->
+    <p id="surprise" class="mt-4 text-base sm:text-lg font-bold text-purple-600 hidden animate-pulse">
+      You both are absolutely amazing! Have the best birthday ever! 💖
+    </p>
+  </div>
+
+  <script>
+    function celebrate() {
+      // 1. Play the Lofi Background Music
+      const music = document.getElementById('lofi-music');
+      music.volume = 0.4; // Sets a pleasant, chill background volume level
+      music.play().catch(error => {
+        console.log("Audio playback delayed until deeper user interaction:", error);
+      });
+
+      // 2. Reveal the hidden birthday message
+      document.getElementById('surprise').classList.remove('hidden');
+
+      // 3. Center explosion confetti
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      // 4. Side bursts confetti for extra flare
+      setTimeout(() => {
+        confetti({ particleCount: 100, spread: 120, origin: { x: 0.1, y: 0.5 } });
+        confetti({ particleCount: 100, spread: 120, origin: { x: 0.9, y: 0.5 } });
+      }, 300);
+    }
+  </script>
+</body>
+</html>
